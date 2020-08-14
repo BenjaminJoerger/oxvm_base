@@ -46,14 +46,14 @@ end
 
 def override_shared_folder(override, vm_config, provider)
   asf = vm_config["app_shared_folder"]
-  sync_type = asf["sync_type"]
+  sync_type = "nfs"
 
   if vm_config.has_key?("provider_specific") &&
     vm_config["provider_specific"].has_key?(provider) &&
     vm_config["provider_specific"][provider].has_key?("app_shared_folder") &&
     vm_config["provider_specific"][provider]["app_shared_folder"].has_key?("sync_type")
 
-    sync_type = vm_config["provider_specific"][provider]["app_shared_folder"]["sync_type"]
+    sync_type = "nfs"
   end
 
   if asf.has_key?("bindfs") && asf["bindfs"]
